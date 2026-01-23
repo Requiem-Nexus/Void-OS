@@ -317,6 +317,111 @@
             }
         }, 2000);
         
+        // ═══════════════════════════════════════════════════════════════
+        // ANTI-DEBUGGING SYSTEM — MAXIMUM EVIL 😈
+        // ═══════════════════════════════════════════════════════════════
+        
+        // 1. Debugger Trap — Infinite debugger statements
+        (function _antiDebug() {
+            setInterval(() => {
+                const before = performance.now();
+                debugger;
+                const after = performance.now();
+                // If paused more than 100ms, someone's debugging
+                if (after - before > 100 && !_0x9c) {
+                    _collapse('Debugger detected');
+                }
+            }, 1000);
+        })();
+        
+        // 2. DevTools Detection — Window size change
+        let _devToolsOpen = false;
+        const _checkDevTools = () => {
+            const widthThreshold = window.outerWidth - window.innerWidth > 160;
+            const heightThreshold = window.outerHeight - window.innerHeight > 160;
+            if ((widthThreshold || heightThreshold) && !_0x9c) {
+                _devToolsOpen = true;
+                // Give a warning first time
+                console.warn('%c⚠️ VOID OS: DevTools detected. Close immediately.', 'color:red;font-size:20px');
+            }
+        };
+        setInterval(_checkDevTools, 500);
+        
+        // 3. Console Hijack — Detect console usage
+        const _originalLog = console.log;
+        const _originalWarn = console.warn;
+        const _originalError = console.error;
+        let _consoleUsageCount = 0;
+        
+        console.log = function(...args) {
+            _consoleUsageCount++;
+            if (_consoleUsageCount > 50 && !_0x9c) {
+                // Too much console activity - suspicious
+                console.warn = _originalWarn; // Restore to show warning
+                _originalWarn('%c⚠️ Excessive console activity detected', 'color:orange');
+            }
+            return _originalLog.apply(console, args);
+        };
+        
+        // 4. Block Right-Click Context Menu (optional layer)
+        document.addEventListener('contextmenu', (e) => {
+            if (!_0x9c) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // 5. Block F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+        document.addEventListener('keydown', (e) => {
+            // F12
+            if (e.key === 'F12') {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+I (DevTools)
+            if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+J (Console)
+            if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+U (View Source)
+            if (e.ctrlKey && e.key === 'u') {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+C (Element Inspector)
+            if (e.ctrlKey && e.shiftKey && e.key === 'C') {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // 6. Detect Function.toString() inspection
+        const _origToString = Function.prototype.toString;
+        let _toStringCalls = 0;
+        Function.prototype.toString = function() {
+            _toStringCalls++;
+            if (_toStringCalls > 20 && !_0x9c) {
+                // Someone's inspecting functions - suspicious
+                console.warn('%c⚠️ VOID OS: Code inspection detected', 'color:orange');
+            }
+            return _origToString.call(this);
+        };
+        
+        // 7. Console Clear on Load (hide traces)
+        setTimeout(() => {
+            if (!_0x9c) {
+                console.clear();
+                console.log('%c🌀 VOID OS', 'color:#a855f7;font-size:30px;font-weight:bold');
+                console.log('%cThe void is watching...', 'color:#6366f1;font-size:14px');
+                console.log('%c⚠️ Debugging is monitored.', 'color:red;font-size:12px');
+            }
+        }, 1000);
+        
     })();
     </script>
     <style>
