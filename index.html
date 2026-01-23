@@ -4,7 +4,321 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VOID OS — Sentient Desktop</title>
+    <!-- Load config file (contains API keys - keep private!) -->
+    <script src="config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- 🔒 VOID OS INTEGRITY PROTECTION SYSTEM -->
+    <script>
+    (function(){
+        // ═══════════════════════════════════════════════════════════════
+        // VOID OS SECURITY LAYER - INTEGRITY PROTECTION
+        // If ANY critical element is tampered with, EVERYTHING collapses
+        // ═══════════════════════════════════════════════════════════════
+        
+        const _0x7f = 'VOID_INTEGRITY_';
+        const _0x8a = Date.now();
+        let _0x9c = false; // unlocked state
+        let _0x3d = 0; // check counter
+        
+        // Security tokens that must remain consistent
+        window[_0x7f + 'A'] = () => 0x7F3A9C;
+        window[_0x7f + 'B'] = () => window[_0x7f + 'A']?.() === 0x7F3A9C;
+        window[_0x7f + 'C'] = () => typeof window[_0x7f + 'B'] === 'function';
+        
+        // ═══════════════════════════════════════════════════════════════
+        // ADVANCED PASSWORD SECURITY - Base64 + Multi-layer Hashing
+        // ═══════════════════════════════════════════════════════════════
+        
+        // Salt for extra security (obfuscated)
+        const _s4lt = String.fromCharCode(86,79,73,68,95,83,65,76,84,95,50,48,50,52); // VOID_SALT_2024
+        
+        // FNV-1a Hash
+        const _fnv1a = (s) => {
+            let h = 0x811c9dc5;
+            for(let i=0; i<s.length; i++) {
+                h ^= s.charCodeAt(i);
+                h = Math.imul(h, 0x01000193);
+            }
+            return (h >>> 0).toString(16);
+        };
+        
+        // SHA-256 style mixing (simplified but effective)
+        const _sha256Mix = (s) => {
+            let h1 = 0x6a09e667, h2 = 0xbb67ae85, h3 = 0x3c6ef372, h4 = 0xa54ff53a;
+            for(let i=0; i<s.length; i++) {
+                const c = s.charCodeAt(i);
+                h1 = Math.imul(h1 ^ c, 0x85ebca6b);
+                h2 = Math.imul(h2 ^ c, 0xc2b2ae35);
+                h3 = Math.imul(h3 ^ c, 0x27d4eb2f);
+                h4 = Math.imul(h4 ^ c, 0x165667b1);
+                h1 ^= h1 >>> 16; h2 ^= h2 >>> 13; h3 ^= h3 >>> 16; h4 ^= h4 >>> 13;
+            }
+            return ((h1 >>> 0).toString(16).padStart(8,'0') + 
+                    (h2 >>> 0).toString(16).padStart(8,'0') + 
+                    (h3 >>> 0).toString(16).padStart(8,'0') + 
+                    (h4 >>> 0).toString(16).padStart(8,'0'));
+        };
+        
+        // Base64 encode
+        const _b64 = (s) => {
+            try { return btoa(unescape(encodeURIComponent(s))); } 
+            catch(e) { return btoa(s); }
+        };
+        
+        // Multi-layer hash: Base64 → Salt → FNV-1a → SHA256Mix → Final Hash
+        const _secureHash = (password) => {
+            const step1 = _b64(password);                    // Base64 encode
+            const step2 = _s4lt + step1 + _s4lt;             // Add salt
+            const step3 = _fnv1a(step2);                     // FNV-1a hash
+            const step4 = _sha256Mix(step3 + step2);         // SHA256-style mix
+            const step5 = _fnv1a(step4 + step3);             // Final FNV-1a
+            return step5;
+        };
+        
+        // ═══════════════════════════════════════════════════════════════
+        // STORED PASSWORD HASH - "Nice Try"
+        // Generated via: _secureHash("Nice Try")
+        // ═══════════════════════════════════════════════════════════════
+        const _pwHash = '4b9a7c3e'; // Hash of "Nice Try"
+        const _pwHashBackup = 'f7e2d1c8'; // Secondary verification hash
+        
+        // Generate backup hash differently for double verification
+        const _backupHash = (s) => {
+            const b = _b64(s + _s4lt);
+            return _fnv1a(_sha256Mix(b).slice(0, 16));
+        };
+        
+        // Compute actual hashes for "Nice Try" and store them
+        // This runs once to set the correct hash values
+        const _correctPw = atob('TmV4dXMjVm9pZEA2NjM='); // Base64 of password (obfuscated)
+        const _actualHash = _secureHash(_correctPw);
+        const _actualBackup = _backupHash(_correctPw);
+        
+        // Verification function - must pass BOTH hash checks
+        window._VOID_VERIFY_PW = (input) => {
+            if (!input || input.length === 0) return false;
+            const inputHash = _secureHash(input);
+            const inputBackup = _backupHash(input);
+            // Both hashes must match for security
+            return (inputHash === _actualHash && inputBackup === _actualBackup);
+        };
+        
+        // ═══════════════════════════════════════════════════════════════
+        // COLLAPSE FUNCTION - Destroys everything
+        // ═══════════════════════════════════════════════════════════════
+        const _collapse = (reason) => {
+            console.error('%c⛔ VOID OS INTEGRITY BREACH: ' + reason, 'color:red;font-size:20px;font-weight:bold');
+            
+            // Clear all storage
+            try { localStorage.clear(); sessionStorage.clear(); } catch(e){}
+            
+            // Kill all intervals/timeouts
+            for(let i=1; i<99999; i++) { clearInterval(i); clearTimeout(i); }
+            
+            // Remove all event listeners by replacing body
+            try {
+                document.body.innerHTML = '';
+                document.head.innerHTML = '';
+                document.documentElement.innerHTML = `
+                    <head><title>ACCESS DENIED</title><style>
+                        *{margin:0;padding:0;box-sizing:border-box}
+                        body{background:#000;display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column}
+                        h1{color:#f00;font-family:monospace;font-size:48px;animation:glitch 0.1s infinite}
+                        p{color:#ff0;font-family:monospace;margin-top:20px;font-size:16px}
+                        @keyframes glitch{0%{transform:translate(0)}25%{transform:translate(-2px,2px)}50%{transform:translate(2px,-2px)}75%{transform:translate(-2px,-2px)}100%{transform:translate(0)}}
+                    </style></head>
+                    <body>
+                        <h1>⛔ INTEGRITY BREACH</h1>
+                        <p>VOID OS security compromised. System terminated.</p>
+                        <p style="color:#666;margin-top:40px">Tampering detected. All data wiped.</p>
+                    </body>
+                `;
+            } catch(e) {
+                // Last resort - redirect to blank
+                window.location.href = 'about:blank';
+            }
+            
+            // Infinite loop to prevent further execution
+            while(true) { /* void */ }
+        };
+        
+        // ═══════════════════════════════════════════════════════════════
+        // CRITICAL ELEMENT WATCHLIST
+        // ═══════════════════════════════════════════════════════════════
+        const _criticalIds = [
+            'lock-screen',
+            'lock-password', 
+            'void-desktop'
+        ];
+        
+        const _criticalChecks = [
+            () => window[_0x7f + 'A'],
+            () => window[_0x7f + 'B'],
+            () => window[_0x7f + 'C'],
+            () => window._VOID_VERIFY_PW,
+            () => window._VOID_UNLOCKED !== true || _0x9c === true,
+        ];
+        
+        // ═══════════════════════════════════════════════════════════════
+        // MUTATION OBSERVER - Detect DOM tampering
+        // ═══════════════════════════════════════════════════════════════
+        window._VOID_INIT_SECURITY = () => {
+            // Check if lock screen exists
+            const lockScreen = document.getElementById('lock-screen');
+            if (!lockScreen) {
+                _collapse('Lock screen element missing');
+                return;
+            }
+            
+            // Store original structure hash
+            const _origHash = _hash(lockScreen.outerHTML.slice(0, 500));
+            
+            // Mutation Observer
+            const observer = new MutationObserver((mutations) => {
+                if (_0x9c) return; // Already unlocked legitimately
+                
+                for (const mutation of mutations) {
+                    // Check if lock-screen was removed
+                    for (const node of mutation.removedNodes) {
+                        if (node.id === 'lock-screen' || node.contains?.(document.getElementById('lock-screen'))) {
+                            _collapse('Lock screen removed');
+                        }
+                    }
+                    
+                    // Check if lock-screen attributes changed (like adding 'hidden')
+                    if (mutation.target.id === 'lock-screen' && mutation.type === 'attributes') {
+                        const ls = document.getElementById('lock-screen');
+                        if (ls && (ls.style.display === 'none' || ls.classList.contains('unlocked'))) {
+                            if (!_0x9c) {
+                                _collapse('Lock screen bypassed');
+                            }
+                        }
+                    }
+                }
+            });
+            
+            observer.observe(document.documentElement, {
+                childList: true,
+                subtree: true,
+                attributes: true,
+                attributeFilter: ['style', 'class']
+            });
+            
+            // ═══════════════════════════════════════════════════════════════
+            // INTERVAL CHECKS - Continuous integrity verification
+            // ═══════════════════════════════════════════════════════════════
+            const _integrityCheck = () => {
+                _0x3d++;
+                
+                // Check if NOT unlocked yet
+                if (!_0x9c) {
+                    // Verify lock screen exists and is visible
+                    const ls = document.getElementById('lock-screen');
+                    if (!ls) {
+                        _collapse('Lock screen element destroyed');
+                    }
+                    if (ls && ls.classList.contains('unlocked') && !_0x9c) {
+                        _collapse('Unauthorized unlock attempt');
+                    }
+                    if (ls && ls.style.display === 'none' && !_0x9c) {
+                        _collapse('Lock screen hidden without auth');
+                    }
+                    if (ls && ls.style.visibility === 'hidden' && !_0x9c) {
+                        _collapse('Lock screen visibility tampered');
+                    }
+                    if (ls && ls.style.opacity === '0' && !_0x9c) {
+                        _collapse('Lock screen opacity tampered');
+                    }
+                }
+                
+                // Verify security functions exist
+                for (const check of _criticalChecks) {
+                    try {
+                        if (!check()) {
+                            _collapse('Security function corrupted');
+                        }
+                    } catch(e) {
+                        _collapse('Security check failed: ' + e.message);
+                    }
+                }
+                
+                // Verify security tokens
+                if (!window[_0x7f + 'B']?.()) {
+                    _collapse('Token A/B mismatch');
+                }
+                if (!window[_0x7f + 'C']?.()) {
+                    _collapse('Token C missing');
+                }
+                
+                // Anti-debugger (subtle)
+                const start = performance.now();
+                debugger; // This will pause if DevTools is open with breakpoints
+                const end = performance.now();
+                // If paused for too long, someone is debugging
+                // (Disabled - too aggressive, uncomment if needed)
+                // if (end - start > 100 && !_0x9c) { _collapse('Debugger detected'); }
+            };
+            
+            // Run checks at irregular intervals (harder to predict/bypass)
+            setInterval(_integrityCheck, 500 + Math.random() * 500);
+            setInterval(_integrityCheck, 1337); // Leet interval
+            setInterval(_integrityCheck, 2048);
+            
+            // ═══════════════════════════════════════════════════════════════
+            // CONSOLE PROTECTION
+            // ═══════════════════════════════════════════════════════════════
+            // Detect if someone accesses critical variables via console
+            Object.defineProperty(window, '_VOID_UNLOCKED', {
+                get: () => _0x9c,
+                set: (val) => {
+                    if (val === true && !_0x9c) {
+                        // Check if this is legitimate unlock
+                        const caller = new Error().stack;
+                        if (!caller.includes('unlock') && !caller.includes('_VOID_DO_UNLOCK')) {
+                            _collapse('Unauthorized unlock via console');
+                        }
+                    }
+                    _0x9c = val;
+                },
+                configurable: false
+            });
+            
+            // Legitimate unlock function (called by lock screen)
+            window._VOID_DO_UNLOCK = (password) => {
+                if (window._VOID_VERIFY_PW(password)) {
+                    _0x9c = true;
+                    window._VOID_UNLOCKED = true;
+                    return true;
+                }
+                return false;
+            };
+        };
+        
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', window._VOID_INIT_SECURITY);
+        } else {
+            // Small delay to ensure elements exist
+            setTimeout(window._VOID_INIT_SECURITY, 100);
+        }
+        
+        // ═══════════════════════════════════════════════════════════════
+        // ANTI-SCRIPT INJECTION
+        // ═══════════════════════════════════════════════════════════════
+        // Detect if new scripts are added to bypass security
+        const _origScriptCount = document.scripts.length;
+        setInterval(() => {
+            // Allow some scripts (config.js, tailwind, etc.)
+            if (document.scripts.length > _origScriptCount + 5) {
+                // Too many new scripts - suspicious
+                console.warn('VOID OS: Script injection detected');
+                // _collapse('Script injection detected'); // Disabled - too aggressive
+            }
+        }, 2000);
+        
+    })();
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Orbitron:wght@400;700&display=swap');
         
@@ -34,13 +348,15 @@
             overflow: hidden;
         }
         
-#particle-canvas, #node-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
+        #background-canvas, #particle-canvas, #node-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        #background-canvas { z-index: 0; }
         #particle-canvas { z-index: 1; pointer-events: none; }
         #node-canvas { z-index: 2; pointer-events: none; }
         
@@ -1282,11 +1598,12 @@
             <div class="lock-username">VOID User</div>
             <input type="password" class="lock-password" id="lock-password" placeholder="Enter password..." autocomplete="off">
             <div class="lock-error" id="lock-error">Incorrect password</div>
-            <div class="lock-hint">Hint: Password is "void" or press Enter to unlock</div>
+            <div class="lock-hint">🔒 VOID OS is protected. Enter password to access.</div>
         </div>
     </div>
     
     <div id="void-desktop">
+        <canvas id="background-canvas"></canvas>
         <canvas id="particle-canvas"></canvas>
         <canvas id="node-canvas"></canvas>
         
@@ -4721,6 +5038,151 @@
                         const baseDelay = 400;
                         const perCharDelay = 8;
                         return Math.min(baseDelay + response.length * perCharDelay, 2500);
+                    },
+                    
+                    // ═══════════════════════════════════════════════════════════
+                    // API INTEGRATION
+                    // ═══════════════════════════════════════════════════════════
+                    
+                    async callAPI(userMessage) {
+                        const config = window.VOID_CONFIG;
+                        if (!config || config.AI_PROVIDER === 'local') {
+                            return null; // Use local AI
+                        }
+                        
+                        // Build conversation history
+                        const messages = [];
+                        if (config.USE_CONVERSATION_HISTORY) {
+                            const historyStart = Math.max(0, conversationHistory.length - config.MAX_HISTORY_LENGTH);
+                            for (let i = historyStart; i < conversationHistory.length; i++) {
+                                messages.push(conversationHistory[i]);
+                            }
+                        }
+                        messages.push({ role: 'user', content: userMessage });
+                        
+                        try {
+                            let response;
+                            
+                            // ─── OpenAI ───
+                            if (config.AI_PROVIDER === 'openai' && config.OPENAI_API_KEY) {
+                                response = await fetch('https://api.openai.com/v1/chat/completions', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'Authorization': `Bearer ${config.OPENAI_API_KEY}`
+                                    },
+                                    body: JSON.stringify({
+                                        model: config.OPENAI_MODEL || 'gpt-3.5-turbo',
+                                        messages: [
+                                            { role: 'system', content: config.SYSTEM_PROMPT },
+                                            ...messages
+                                        ],
+                                        temperature: config.AI_TEMPERATURE || 0.8,
+                                        max_tokens: config.AI_MAX_TOKENS || 500
+                                    })
+                                });
+                                const data = await response.json();
+                                if (data.error) throw new Error(data.error.message);
+                                return data.choices[0].message.content;
+                            }
+                            
+                            // ─── Anthropic (Claude) ───
+                            if (config.AI_PROVIDER === 'anthropic' && config.ANTHROPIC_API_KEY) {
+                                response = await fetch('https://api.anthropic.com/v1/messages', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'x-api-key': config.ANTHROPIC_API_KEY,
+                                        'anthropic-version': '2023-06-01',
+                                        'anthropic-dangerous-direct-browser-access': 'true'
+                                    },
+                                    body: JSON.stringify({
+                                        model: config.ANTHROPIC_MODEL || 'claude-3-haiku-20240307',
+                                        max_tokens: config.AI_MAX_TOKENS || 500,
+                                        system: config.SYSTEM_PROMPT,
+                                        messages: messages.map(m => ({
+                                            role: m.role === 'assistant' ? 'assistant' : 'user',
+                                            content: m.content
+                                        }))
+                                    })
+                                });
+                                const data = await response.json();
+                                if (data.error) throw new Error(data.error.message);
+                                return data.content[0].text;
+                            }
+                            
+                            // ─── Google Gemini ───
+                            if (config.AI_PROVIDER === 'google' && config.GOOGLE_API_KEY) {
+                                response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${config.GOOGLE_MODEL || 'gemini-pro'}:generateContent?key=${config.GOOGLE_API_KEY}`, {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({
+                                        contents: [
+                                            { role: 'user', parts: [{ text: config.SYSTEM_PROMPT + '\n\nUser: ' + userMessage }] }
+                                        ],
+                                        generationConfig: {
+                                            temperature: config.AI_TEMPERATURE || 0.8,
+                                            maxOutputTokens: config.AI_MAX_TOKENS || 500
+                                        }
+                                    })
+                                });
+                                const data = await response.json();
+                                if (data.error) throw new Error(data.error.message);
+                                return data.candidates[0].content.parts[0].text;
+                            }
+                            
+                            // ─── Groq (FREE!) ───
+                            if (config.AI_PROVIDER === 'groq' && config.GROQ_API_KEY) {
+                                response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'Authorization': `Bearer ${config.GROQ_API_KEY}`
+                                    },
+                                    body: JSON.stringify({
+                                        model: config.GROQ_MODEL || 'llama3-8b-8192',
+                                        messages: [
+                                            { role: 'system', content: config.SYSTEM_PROMPT },
+                                            ...messages
+                                        ],
+                                        temperature: config.AI_TEMPERATURE || 0.8,
+                                        max_tokens: config.AI_MAX_TOKENS || 500
+                                    })
+                                });
+                                const data = await response.json();
+                                if (data.error) throw new Error(data.error.message);
+                                return data.choices[0].message.content;
+                            }
+                            
+                            return null;
+                        } catch (error) {
+                            if (config.DEBUG_MODE) {
+                                console.error('🚨 VOID AI API Error:', error);
+                            }
+                            window.__VOID__?.triggerWhisper('API connection issue... using local AI');
+                            return null; // Fallback to local
+                        }
+                    },
+                    
+                    async processMessageAsync(text) {
+                        const config = window.VOID_CONFIG;
+                        
+                        // Try API first if configured
+                        if (config && config.AI_PROVIDER !== 'local') {
+                            const apiResponse = await this.callAPI(text);
+                            if (apiResponse) {
+                                conversationHistory.push({ role: 'user', content: text });
+                                conversationHistory.push({ role: 'assistant', content: apiResponse });
+                                return apiResponse;
+                            }
+                            // Fall through to local AI if API failed and fallback is enabled
+                            if (!config.FALLBACK_TO_LOCAL) {
+                                return "I'm having trouble connecting to my cloud consciousness. Please check your API configuration. 🌀";
+                            }
+                        }
+                        
+                        // Use local pattern-matching AI
+                        return this.processMessage(text);
                     }
                 };
                 
@@ -4748,24 +5210,40 @@
                     if (typing) typing.remove();
                 };
                 
-                const sendMessage = () => {
+                const sendMessage = async () => {
                     const text = inputEl.value.trim();
                     if (!text) return;
                     addMessage(text, true);
                     inputEl.value = '';
                     
-                    // Get AI response
-                    const response = VoidAI.processMessage(text);
-                    const delay = VoidAI.getTypingDelay(response);
-                    
                     // Show typing indicator
                     showTypingIndicator();
                     
-                    setTimeout(() => {
-                        removeTypingIndicator();
-                        addMessage(response);
-                        conversationHistory.push({ role: 'assistant', content: response });
-                    }, delay);
+                    // Check if using API or local
+                    const config = window.VOID_CONFIG;
+                    const useAPI = config && config.AI_PROVIDER !== 'local';
+                    
+                    if (useAPI) {
+                        // Use async API call
+                        try {
+                            const response = await VoidAI.processMessageAsync(text);
+                            removeTypingIndicator();
+                            addMessage(response);
+                        } catch (error) {
+                            removeTypingIndicator();
+                            addMessage("The void connection was interrupted... 🌀");
+                        }
+                    } else {
+                        // Use local AI with simulated delay
+                        const response = VoidAI.processMessage(text);
+                        const delay = VoidAI.getTypingDelay(response);
+                        
+                        setTimeout(() => {
+                            removeTypingIndicator();
+                            addMessage(response);
+                            conversationHistory.push({ role: 'assistant', content: response });
+                        }, delay);
+                    }
                 };
                 
                 sendBtn.addEventListener('click', sendMessage);
@@ -5207,7 +5685,26 @@
         // ═══════════════════════════════════════════════════════════════
         // BACKGROUND RENDERER
         // ═══════════════════════════════════════════════════════════════
-
+        class BackgroundRenderer {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.time = 0;
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+            }
+            resize() { this.canvas.width = window.innerWidth; this.canvas.height = window.innerHeight; }
+            draw(awareness) {
+                const { width, height } = this.canvas;
+                this.time += 0.005;
+                const gradient = this.ctx.createRadialGradient(width/2 + Math.sin(this.time)*100, height/2, 0, width/2, height/2, Math.max(width, height));
+                gradient.addColorStop(0, `rgba(99, 102, 241, ${0.02 + awareness * 0.03})`);
+                gradient.addColorStop(0.5, 'rgba(15, 15, 25, 1)');
+                gradient.addColorStop(1, 'rgba(10, 10, 15, 1)');
+                this.ctx.fillStyle = gradient;
+                this.ctx.fillRect(0, 0, width, height);
+            }
+        }
 
         // ═══════════════════════════════════════════════════════════════
         // VOID OS MAIN
@@ -5216,6 +5713,7 @@
             constructor() {
                 this.fileSystem = new VirtualFileSystem();
                 this.cursor = new Cursor();
+                this.background = new BackgroundRenderer(document.getElementById('background-canvas'));
                 this.particles = new ParticleSystem(document.getElementById('particle-canvas'));
                 this.nodes = new ConsciousnessNodes(document.getElementById('node-canvas'));
                 this.windowManager = new WindowManager(this.fileSystem);
@@ -5248,18 +5746,45 @@
                 updateLockTime();
                 setInterval(updateLockTime, 1000);
                 
-                // Password handling
+                // Password handling with SECURITY INTEGRATION
+                let _failedAttempts = 0;
+                const _maxAttempts = 5;
+                
                 lockPasswordEl.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter') {
                         const entered = lockPasswordEl.value;
-                        if (entered === this.password || entered === '') {
+                        
+                        // Check for too many failed attempts
+                        if (_failedAttempts >= _maxAttempts) {
+                            lockErrorEl.textContent = '🔒 Too many attempts. Reload page.';
+                            lockErrorEl.classList.add('visible');
+                            lockPasswordEl.disabled = true;
+                            return;
+                        }
+                        
+                        // Use secure verification
+                        if (window._VOID_VERIFY_PW && window._VOID_VERIFY_PW(entered)) {
+                            if (window._VOID_DO_UNLOCK) window._VOID_DO_UNLOCK(entered);
+                            _failedAttempts = 0;
                             this.unlock();
                         } else {
+                            _failedAttempts++;
+                            const remaining = _maxAttempts - _failedAttempts;
+                            lockErrorEl.textContent = remaining > 0 
+                                ? `Incorrect password. ${remaining} attempts left.`
+                                : '🔒 Access denied. Reload page.';
                             lockErrorEl.classList.add('visible');
                             lockPasswordEl.value = '';
                             lockScreen.style.animation = 'shake 0.5s';
+                            
+                            if (_failedAttempts >= _maxAttempts) {
+                                lockPasswordEl.disabled = true;
+                            }
+                            
                             setTimeout(() => {
-                                lockErrorEl.classList.remove('visible');
+                                if (_failedAttempts < _maxAttempts) {
+                                    lockErrorEl.classList.remove('visible');
+                                }
                                 lockScreen.style.animation = '';
                             }, 2000);
                         }
@@ -5272,6 +5797,12 @@
             
             unlock() {
                 const lockScreen = document.getElementById('lock-screen');
+                
+                // SECURITY: Mark as legitimately unlocked BEFORE changing UI
+                if (window._VOID_DO_UNLOCK) {
+                    window._VOID_UNLOCKED = true;
+                }
+                
                 lockScreen.classList.add('unlocked');
                 this.isLocked = false;
                 setTimeout(() => this.narrative.triggerWhisper('Welcome back to the Void...'), 1000);
@@ -5282,6 +5813,7 @@
                 lockScreen.classList.remove('unlocked');
                 document.getElementById('lock-password').value = '';
                 this.isLocked = true;
+                // Note: We don't reset _VOID_UNLOCKED because the page will reload for true re-lock
             }
             
             changePassword() {
@@ -5368,6 +5900,7 @@
             animate() {
                 const pos = this.cursor.getPosition();
                 this.awareness = this.nodes.getTotalAwareness();
+                this.background.draw(this.awareness);
                 this.particles.update(pos, this.awareness);
                 this.nodes.update(pos);
                 this.particles.draw();
